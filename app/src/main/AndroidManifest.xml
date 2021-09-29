@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myapplication">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Library"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication">
+        <activity
+            android:name=".CurrentlyReadActivity"
+            android:exported="true"
+            android:label="Currently Reading Book"/>
+        <activity
+            android:name=".AlreadyReadBookActivity"
+            android:exported="true"
+            android:label="Already Read Books"/>
+        <activity
+            android:name=".wantToActivity"
+            android:exported="true"
+            android:label="Want To Reading Book"/>
+        <activity
+            android:name=".Full_item_recView"
+            android:exported="true"
+            android:label="Books"/>
+        <activity
+            android:name=".AllBookActivity"
+            android:exported="true"
+            android:label="All Books"/>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="Library">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Full_item_recView">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/firstrellayout">
+
+        <Button
+            android:id="@+id/CurrntReadbtn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            android:text="Add to Current Reading" />
+
+        <Button
+            android:id="@+id/WantReadbtn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/CurrntReadbtn"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="8dp"
+            android:text="Add to Want ot Read" />
+
+        <Button
+            android:id="@+id/AlreadyReadbtn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/WantReadbtn"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="8dp"
+            android:text="Add Already Read" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/secondrellayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/firstrellayout"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/booktext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@+id/bookimage"
+            android:text="BookName"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/authortext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/booktext"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@+id/bookimage"
+            android:text="Author" />
+
+        <ImageView
+            android:id="@+id/bookimage"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/pagestext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/authortext"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@+id/bookimage"
+            android:text="pages"
+
+            />
+
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/bookdescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/secondrellayout"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Description" />
+
+
+
+
+
+  </RelativeLayout>
