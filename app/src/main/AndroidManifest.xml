@@ -12,25 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".WebViewActivity"
+            android:exported="true" />
+        <activity
             android:name=".CurrentlyReadActivity"
             android:exported="true"
-            android:label="Currently Reading Book"/>
+            android:label="Currently Reading Book" />
         <activity
             android:name=".AlreadyReadBookActivity"
             android:exported="true"
-            android:label="Already Read Books"/>
+            android:label="Already Read Books" />
         <activity
             android:name=".wantToActivity"
             android:exported="true"
-            android:label="Want To Reading Book"/>
+            android:label="Want To Reading Book" />
         <activity
             android:name=".Full_item_recView"
             android:exported="true"
-            android:label="Books"/>
+            android:label="Books" />
         <activity
             android:name=".AllBookActivity"
             android:exported="true"
-            android:label="All Books"/>
+            android:label="All Books" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
