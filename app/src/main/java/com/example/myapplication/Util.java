@@ -67,7 +67,7 @@ public class Util {
     }
 
     public boolean removealreadyreadbooks(Books book){
-        return alreadyreadbooks.add(book);
+        return alreadyreadbooks.remove(book);
     }
 
 

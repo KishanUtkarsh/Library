@@ -87,7 +87,6 @@ public class Full_item_recView extends AppCompatActivity {
     private void btncurReadingTaped(){
 
         Log.d(TAG, "btncurReadingTaped: Started");
-        //TODO : Correct the Logic
 
         ArrayList<Books> currentlyReadingBook = util.getCurrentreadingbooks();
 
@@ -166,7 +165,6 @@ public class Full_item_recView extends AppCompatActivity {
 
     private void alreadyreadbtntapped(){
         Log.d(TAG, "alreadyreadbtntapped: Started");
-        //TODO : Correct the Logic
 
         ArrayList<Books> alreadyReadingBook = util.getAlreadyreadbooks();
 
@@ -218,17 +216,16 @@ public class Full_item_recView extends AppCompatActivity {
             }else{
                 ArrayList<Books> wanttoReadBook = util.getWanttoreadbooks();
 
-
                 if(wanttoReadBook.contains(incommingbook)) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setMessage("Are you Finish This Book");
+                    builder.setMessage("Are you Finish this book.");
 
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            util.removeCurrentReadingBooks(incommingbook);
+                            util.removewanttoreadbooks(incommingbook);
                             util.addalreadyreadbooks(incommingbook);
-                            Toast.makeText(Full_item_recView.this,incommingbook.getname() + " is Added to your Already Read book List" , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Full_item_recView.this,incommingbook.getname() + " is Added to your want to Read book List" , Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -257,7 +254,6 @@ public class Full_item_recView extends AppCompatActivity {
     private void wantreadbtnTapped(){
         Log.d(TAG, "wantreadbtnTapped: Started");
 
-        //TODO : Correct the Logic
         ArrayList<Books> wanttoReadBook = util.getWanttoreadbooks();
 
 
@@ -284,7 +280,7 @@ public class Full_item_recView extends AppCompatActivity {
 
             if(alreadyreadbook.contains(incommingbook)){
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("You Already Read this book you want to read one more time ");
+                builder.setMessage("You Already Read this book you want to read one more time.");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -306,13 +302,14 @@ public class Full_item_recView extends AppCompatActivity {
 
                 if(currentlyReadBook.contains(incommingbook)){
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setMessage("Already Added in Currently Read Book");
-                    builder.setTitle("Error");
+                    builder.setMessage("currently reading this book are you want to read after some time.");
 
-                    builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-
+                            util.removeCurrentReadingBooks(incommingbook);
+                            util.addwanttoreadbooks(incommingbook);
+                            Toast.makeText(Full_item_recView.this, incommingbook.getname() + "Added to Want to add list.", Toast.LENGTH_SHORT).show();
                         }
                     });
                     builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
