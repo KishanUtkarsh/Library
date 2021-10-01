@@ -19,11 +19,13 @@ public class CurrentlyReadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currently_read);
+        overridePendingTransition(R.anim.in,R.anim.out);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recyclerView = (RecyclerView) findViewById(R.id.CurrentlReadRecView);
         adapter = new BookrecviewAdapter(this);
+        adapter.setType("Current Read Book");
         util = new Util();
 
         recyclerView.setAdapter(adapter);
@@ -42,5 +44,9 @@ public class CurrentlyReadActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.close_in,R.anim.close_out);
     }
 }

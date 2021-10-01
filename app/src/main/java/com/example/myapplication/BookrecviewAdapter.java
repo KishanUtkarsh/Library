@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +26,10 @@ import java.util.zip.Inflater;
 public class BookrecviewAdapter extends RecyclerView.Adapter<BookrecviewAdapter.ViewHolder> {
 
     private ArrayList<Books> books = new ArrayList<>();
+    private static final String TAG = "BookrecviewAdapter";
+    private Context context;
+    private String type = " ";
+    private Util util;
 
 
     @NonNull
@@ -49,6 +55,63 @@ public class BookrecviewAdapter extends RecyclerView.Adapter<BookrecviewAdapter.
             }
         });
 
+        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                final Books curbook = books.get(position);
+                AlertDialog.Builder builder = new AlertDialog.Builder(context)
+                        .setTitle("Delete" + curbook.getname())
+                        .setMessage("You want ot Delete")
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                switch (type){
+                    case "Current Read Book":
+                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if(util.removeCurrentReadingBooks(books.get(position))){
+                                    notifyDataSetChanged();
+                                    Toast.makeText(context, curbook.getname()+ " Deleted Sucessfully.",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }).create().show();
+
+                        break;
+                    case "Want to Read Book":
+                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if(util.removewanttoreadbooks(books.get(position))){
+                                    notifyDataSetChanged();
+                                    Toast.makeText(context, curbook.getname()+ " Deleted Sucessfully.",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }).create().show();
+
+                        break;
+                    case "Already Read Book":
+                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if(util.removealreadyreadbooks(books.get(position))){
+                                    notifyDataSetChanged();
+                                    Toast.makeText(context, curbook.getname()+ " Deleted Sucessfully.",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }).create().show();
+
+                        break;
+                    default:
+                        break;
+                }
+                return  true;
+            }
+        });
+
         Glide.with(context)
                 .asBitmap()
                 .load(books.get(position).getimageUrl())
@@ -61,11 +124,11 @@ public class BookrecviewAdapter extends RecyclerView.Adapter<BookrecviewAdapter.
         return books.size();
     }
 
-    private static final String TAG = "BookrecviewAdapter";
-    private Context context;
+
 
     public BookrecviewAdapter(Context context) {
         this.context = context;
+        util = new Util();
     }
 
 
@@ -90,5 +153,9 @@ public class BookrecviewAdapter extends RecyclerView.Adapter<BookrecviewAdapter.
     public void setBooks(ArrayList<Books> books) {
         this.books = books;
         notifyDataSetChanged();
+    }
+
+    public void setType(String type){
+        this.type = type;
     }
 }

@@ -22,12 +22,14 @@ public class wantToActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_want_to);
+        overridePendingTransition(R.anim.in,R.anim.out);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recyclerView = (RecyclerView) findViewById(R.id.wantToRecView);
         util = new Util();
         adapter = new BookrecviewAdapter(this);
+        adapter.setType("Want to Read Book");
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
@@ -47,5 +49,11 @@ public class wantToActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.close_in,R.anim.close_out);
     }
 }

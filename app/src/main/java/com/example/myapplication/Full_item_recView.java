@@ -34,6 +34,7 @@ public class Full_item_recView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_item_rec_view);
+        overridePendingTransition(R.anim.in,R.anim.out);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initwigits();
@@ -359,5 +360,9 @@ public class Full_item_recView extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.close_in,R.anim.close_out);
     }
 }

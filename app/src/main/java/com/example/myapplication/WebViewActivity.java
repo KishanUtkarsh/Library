@@ -19,6 +19,7 @@ public class WebViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
+        overridePendingTransition(R.anim.in,R.anim.out);
         String url = " ";
 
         try {
@@ -42,6 +43,10 @@ public class WebViewActivity extends AppCompatActivity {
         else{
             super.onBackPressed();
         }
+    }
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.close_in,R.anim.close_out);
     }
 
 

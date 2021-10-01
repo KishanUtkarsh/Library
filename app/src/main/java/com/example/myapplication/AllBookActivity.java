@@ -24,6 +24,7 @@ public class AllBookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_book);
+        overridePendingTransition(R.anim.in,R.anim.out);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -51,5 +52,9 @@ public class AllBookActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.close_in,R.anim.close_out);
     }
 }

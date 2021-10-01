@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        overridePendingTransition(R.anim.in,R.anim.out);
 
         initialising();
         setOnClickLishner();
@@ -99,5 +100,9 @@ public class MainActivity extends AppCompatActivity {
         alreadybtn4 = (Button) findViewById(R.id.Alreadyreadbookbtn);
         aboutbtn5 = (Button) findViewById(R.id.Aboutbtn);
 
+    }
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.close_in,R.anim.close_out);
     }
 }
